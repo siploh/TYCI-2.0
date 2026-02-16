@@ -1,0 +1,8 @@
+{
+  "galeri": [
+    {"src": "img/kegiatan1.jpg", "alt": "Kegiatan 1"},
+    {"src": "img/kegiatan2.jpg", "alt": "Kegiatan 2"},
+    {"src": "img/kegiatan3.jpg", "alt": "Kegiatan 3"}
+  ]
+}
+

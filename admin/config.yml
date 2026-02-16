@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: username/repo-name  # Ganti dengan repo GitHub kamu
+  branch: main
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "galeri"
+    label: "Galeri"
+    folder: "data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Gambar", name: "src", widget: "image"}
+      - {label: "Alt Text", name: "alt", widget: "string"}
+
+  - name: "event"
+    label: "Event Mendatang"
+    folder: "data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Tanggal", name: "tanggal", widget: "date"}
+      - {label: "Judul Event", name: "judul", widget: "string"}
+      - {label: "Lokasi", name: "lokasi", widget: "string"}
+      - {label: "Deskripsi", name: "deskripsi", widget: "text"}
+

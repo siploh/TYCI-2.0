@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Pendaftaran TYCI</title>
+
+<!-- Favicon TYCI Merah -->
+<link rel="icon" type="image/png" href="img/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --merah-tyci: #d71920;
+  --merah-tyci-dark: #b9151b;
+  --bg: #f7f7f7;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background: var(--bg);
+  padding:20px;
+}
+
+.container{
+  max-width: 950px;
+  margin:auto;
+  background:#fff;
+  padding:35px;
+  border-radius:15px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.1);
+  border-top:5px solid var(--merah-tyci);
+}
+
+h2{
+  text-align:center;
+  margin-bottom:25px;
+  color: var(--merah-tyci);
+}
+
+.form-group{
+  margin-bottom:18px;
+}
+
+label{
+  font-weight:600;
+  display:block;
+  margin-bottom:6px;
+  color: var(--merah-tyci);
+}
+
+input, select, textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:14px;
+}
+
+textarea{
+  resize:vertical;
+}
+
+.radio-group{
+  display:flex;
+  gap:20px;
+}
+
+.radio-group label{
+  font-weight:400;
+  color:#333;
+}
+
+/* Tombol Animasi */
+button{
+  background: var(--merah-tyci);
+  color:#fff;
+  border:none;
+  padding:14px;
+  width:100%;
+  border-radius:8px;
+  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover{
+  background: var(--merah-tyci-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(215,25,32,0.3);
+}
+
+/* Spinner */
+#loading{
+  display:none;
+  text-align:center;
+  margin-top:12px;
+}
+
+.spinner{
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--merah-tyci);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 1s linear infinite;
+  display:inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.success{
+  text-align:center;
+  color: green;
+  font-weight:600;
+  margin-top:15px;
+  font-size:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Form Pendaftaran Member TYCI</h2>
+
+<form id="daftarForm">
+
+<!-- Data Pribadi -->
+<div class="form-group">
+<label>Nama Lengkap *</label>
+<input type="text" name="namaLengkap" required>
+</div>
+
+<div class="form-group">
+<label>Nama Panggilan *</label>
+<input type="text" name="namaPanggilan" required>
+</div>
+
+<div class="form-group">
+<label>Tempat Lahir *</label>
+<input type="text" name="tempatLahir" required>
+</div>
+
+<div class="form-group">
+<label>Tanggal Lahir *</label>
+<input type="date" name="tanggalLahir" required>
+</div>
+
+<div class="form-group">
+<label>Jenis Kelamin *</label>
+<div class="radio-group">
+<label><input type="radio" name="jenisKelamin" value="Pria" required> Pria</label>
+<label><input type="radio" name="jenisKelamin" value="Wanita"> Wanita</label>
+</div>
+</div>
+
+<div class="form-group">
+<label>Ukuran Kemeja *</label>
+<select name="ukuranKemeja" required>
+<option value="">Pilih</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>2XL</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>No Handphone / Telephone *</label>
+<input type="text" name="noHp" required>
+</div>
+
+<div class="form-group">
+<label>No Whatsapp *</label>
+<input type="text" name="noWa" required>
+</div>
+
+<div class="form-group">
+<label>Email Address *</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="form-group">
+<label>Alamat Rumah / Domisili *</label>
+<textarea name="alamat" required></textarea>
+</div>
+
+<div class="form-group">
+<label>Status Perkawinan *</label>
+<select name="status" required>
+<option value="">Pilih</option>
+<option>Menikah</option>
+<option>Belum Menikah</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Tempat Bekerja</label>
+<input type="text" name="tempatKerja">
+</div>
+
+<!-- Data Mobil -->
+<div class="form-group">
+<label>Type Yaris *</label>
+<input type="text" name="typeYaris" required>
+</div>
+
+<div class="form-group">
+<label>Warna Yaris (Sesuai STNK) *</label>
+<input type="text" name="warnaYaris" required>
+</div>
+
+<div class="form-group">
+<label>No Polisi Yaris *</label>
+<input type="text" name="noPolisi" required>
+</div>
+
+<div class="form-group">
+<label>Tahun Pembuatan Yaris *</label>
+<input type="number" name="tahunYaris" required>
+</div>
+
+<div class="form-group">
+<label>Club / Komunitas yang masih aktif saat ini</label>
+<input type="text" name="clubAktif">
+</div>
+
+<div class="form-group">
+<label>Kegiatan Komunitas yang disukai</label>
+<input type="text" name="kegiatanSuka">
+</div>
+
+<div class="form-group">
+<label>Kota Domisili *</label>
+<input type="text" name="kota" required>
+</div>
+
+<div class="form-group">
+<label>Provinsi Domisili *</label>
+<input type="text" name="provinsi" required>
+</div>
+
+<div class="form-group">
+<label>Chapter *</label>
+<select name="chapter" required>
+<option>Aceh</option>
+<option>Medan</option>
+<option>Sumbar</option>
+<option>Lampung</option>
+<option>Bekasi Cikarang</option>
+<option>Bogor</option>
+<option>Karawang</option>
+<option>Tebas</option>
+<option>Barlingmascakeb</option>
+<option>Kalimantan Barat</option>
+<option>Kalimantan Timur</option>
+<option>Jawa Timur</option>
+<option>Celebes</option>
+<option>Sukabumi</option>
+<option>Sercirapan</option>
+<option>Bandung</option>
+<option>Bali</option>
+<option>Semarang</option>
+<option>Riau</option>
+<option>Jambi</option>
+<option>Tangerang</option>
+<option>Kalselteng</option>
+<option>Bengkulu</option>
+<option>Priangan Timur</option>
+<option>Non-Chapter</option>
+</select>
+</div>
+
+<button type="submit">Daftar Sekarang</button>
+
+<div id="loading">
+  <span class="spinner"></span> Mengirim data...
+</div>
+
+<div id="responseMsg"></div>
+
+</form>
+</div>
+
+<script>
+const scriptURL = "YOUR_WEB_APP_URL";
+
+document.getElementById("daftarForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  // tampilkan spinner
+  document.getElementById("loading").style.display="block";
+
+  // disable tombol submit
+  form.querySelector("button").disabled = true;
+
+  fetch(scriptURL, {
+    method:"POST",
+    body: JSON.stringify(data)
+  })
+  .then(res=>res.json())
+  .then(res=>{
+    document.getElementById("loading").style.display="none";
+    document.getElementById("responseMsg").innerHTML =
+      "<div class='success'>Pendaftaran berhasil dikirim ✅</div>";
+    form.reset();
+    form.querySelector("button").disabled = false;
+  })
+  .catch(err=>{
+    document.getElementById("loading").style.display="none";
+    form.querySelector("button").disabled = false;
+    alert("Gagal mengirim data");
+  });
+});
+</script>
+
+</body>
+</html>
